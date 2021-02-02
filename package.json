@@ -15,5 +15,13 @@
     "mongodb": "^3.6.3"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Likhitha-7/internapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Likhitha-7/internapi/issues"
+  },
+  "homepage": "https://github.com/Likhitha-7/internapi#readme",
   "description": ""
 }
