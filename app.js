@@ -5,7 +5,7 @@ const mongo = require("mongodb");
 const MongoClient = mongo.MongoClient;
 const bodyParser = require("body-parser");
 const cors =require("cors");
-const mongourl ="mongodb://localhost;27017";
+const mongourl ="mongodb+srv://users:dbusers@cluster0.4vcfg.mongodb.net/ass4?retryWrites=true&w=majority";
 let db;
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -33,6 +33,13 @@ app.get('/city',(req,res) => {
         res.send(result);
     });
 });
+//add city//
+app.post('/addcity',(req,res)=>{
+    db.collection('city').insert(req.body,(err,result)=>{
+        if(err) throw err;
+        res.status(200).send("data added")
+    })
+});
 // rest//
 app.get('/rest',(req,res) => {
     var condition = {};
@@ -56,6 +63,13 @@ app.get('/rest',(req,res) => {
         res.send(result);
     });
 });
+//add rest//
+app.post('/addrest',(req,res)=>{
+    db.collection('restaurant').insert(req.body,(err,result)=>{
+        if(err) throw err;
+        res.status(200).send("data added")
+    })
+});
 // meal//
 app.get('/meal',(req,res) => {
     db.collection('mealType').find().toArray((err,result) =>{
@@ -63,12 +77,26 @@ app.get('/meal',(req,res) => {
         res.send(result);
     });
 });
+//add meal//
+app.post('/addmeal',(req,res)=>{
+    db.collection('mealType').insert(req.body,(err,result)=>{
+        if(err) throw err;
+        res.status(200).send("data added")
+    })
+});
 // cuisine//
 app.get('/cuisine',(req,res) => {
     db.collection('cuisine').find().toArray((err,result) =>{
         if(err) throw err;
         res.send(result);
     });
+});
+//add cuisine//
+app.post('/addcuisine',(req,res)=>{
+    db.collection('cuisine').insert(req.body,(err,result)=>{
+        if(err) throw err;
+        res.send("data added")
+    })
 });
 //rest as per city//
 app.get('/rest/:id',(req,res)=>{
